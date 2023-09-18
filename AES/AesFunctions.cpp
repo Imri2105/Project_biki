@@ -58,5 +58,16 @@ unsigned char AESFunctions::CalculateNum(unsigned char mul, unsigned char to_mul
 }
 
 void AESFunctions::MixColumn(unsigned char state[][4]){
-    int i =0;
+    unsigned char tmp[4][4] = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+    for (int i=0;i<4;i++)
+    {
+        for (int j=0;j<4;j++)
+        {
+            for (int k=0;k<4;k++)
+            {
+                tmp[j][i] ^= this->CalculateNum(mixMatrix[j][k],state[k][i]);
+            }
+        }
+    }
+    state = tmp;
 }
