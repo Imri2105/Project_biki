@@ -65,9 +65,14 @@ void AESFunctions::MixColumn(unsigned char state[][4]){
         {
             for (int k=0;k<4;k++)
             {
-                tmp[j][i] ^= this->CalculateNum(mixMatrix[j][k],state[k][i]);
+                tmp[j][i] ^= CalculateNum(mixMatrix[j][k],state[k][i]);
             }
         }
     }
-    state = tmp;
+    
+    for(int i = 0;i<4;i++){
+        for(int j = 0;j<4;j++){
+            state[i][j] = tmp[i][j];
+        }
+    }
 }
