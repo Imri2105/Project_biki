@@ -1,0 +1,1 @@
+void PrintState(unsigned char state[][4]);
