@@ -1,5 +1,5 @@
-#ifndef PRE_COMPIELD_HEADERS_UTILS
-#define PRE_COMPIELD_HEADERS_UTILS
+#ifndef PRE_COMPILED_HEADERS_UTILS
+#define PRE_COMPILED_HEADERS_UTILS
 
 #include <iostream>
 #include <vector>

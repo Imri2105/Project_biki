@@ -5,11 +5,11 @@
 
 
 AESKeyExpand::AESKeyExpand(){
-    //to be filled
+    std::cout<<"AES_KEY OBJECT CREATED";
 }
 
 AESKeyExpand::~AESKeyExpand(){
-    //to be filled
+    std::cout<<"AES_KEY OBJECT DESTROYED";
 }
 
 

@@ -1,5 +1,5 @@
-output: bin/main.o bin/AesFunctions.o bin/Utils.o
-	g++ bin/main.o bin/AesFunctions.o bin/Utils.o -o bin/output
+output: bin/main.o bin/AesFunctions.o bin/Utils.o bin/AesKeyExpand.o
+	g++ bin/main.o bin/AesFunctions.o bin/Utils.o bin/AesKeyExpand.o  -o bin/output
 
 bin/main.o: main.cpp 
 	g++ -c main.cpp -o bin/main.o
@@ -9,6 +9,10 @@ bin/AesFunctions.o: AES/AesFunctions.cpp AES/AesFunctions.hpp
 
 bin/Utils.o: AES/Utils.cpp AES/Utils.hpp 
 	g++ -c AES/Utils.cpp -o bin/Utils.o
+
+bin/AesKeyExpand.o: AES/AesKeyExpand.cpp AES/AesKeyExpand.hpp
+	g++ -c AES/AesKeyExpand.cpp -o bin/AesKeyExpand.o
+
 
 run: output
 	bin/output

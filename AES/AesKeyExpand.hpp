@@ -7,7 +7,7 @@ class AESKeyExpand{
     public:
         AESKeyExpand();
         ~AESKeyExpand();
-        void RotWord(unsigned char word[4],int amount);
+        void RotWord(unsigned char word[4],int  = 1);
         void SubKeyBytes(unsigned char word[4]);
 
     //more functions to be written
