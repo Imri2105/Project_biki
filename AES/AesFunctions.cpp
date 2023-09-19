@@ -10,6 +10,14 @@ AESFunctions::~AESFunctions(){
     std::cout << "IM NOT ALIVE" << std::endl;
 }
 
+void AESFunctions::RotWord(unsigned char word[4]){
+    unsigned char temp = word[0];
+    for(int i =1;i<4;i++){
+        word[i-1] = word[i];
+    }
+    word[3] = temp;
+}
+
 void AESFunctions::SubBytes(unsigned char state[][4]){
     for (int i=0;i<4;i++)
     {
