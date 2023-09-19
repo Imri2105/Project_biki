@@ -4,7 +4,6 @@ class AESFunctions{
 public:
     AESFunctions();
     ~AESFunctions();
-    void RotWord(unsigned char word[4],int amount);
     void SubBytes(unsigned char state[][4]);
     void ShiftRow(unsigned char state[][4]);
     unsigned char IfTwo(unsigned char to_mul);

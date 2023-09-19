@@ -11,12 +11,6 @@ AESFunctions::~AESFunctions(){
     std::cout << "IM NOT ALIVE" << std::endl;
 }
 
-void AESFunctions::RotWord(unsigned char word[4],int amount){
-    for(int i = 0;i<amount;i++){
-        RotateOnce(word,4);
-    }
-}
-
 void AESFunctions::SubBytes(unsigned char state[][4]){
     for (int i=0;i<4;i++)
     {

@@ -11,7 +11,5 @@ int main(int argc, char const *argv[]){ //checks if mixColumn works, it works.
     std::cout<<"------------------------------"<<std::endl;
     aes_class.ShiftRow(state1);
     PrintState(state1);
-    //aes_class.RotWord(word,1);
-    // PrintArray(word,sizeof(word)/sizeof(word[0]));
     return 0;
 }

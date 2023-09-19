@@ -7,5 +7,8 @@ class AESKeyExpand{
     public:
         AESKeyExpand();
         ~AESKeyExpand();
+        void RotWord(unsigned char word[4],int amount);
+
+    //more functions to be written
 };
 #endif
