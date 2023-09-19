@@ -1,7 +1,7 @@
 #include "AesFunctions.hpp"
 #include "pch.hpp"
 #include "boxes.hpp"
-
+#include <iomanip>
 AESFunctions::AESFunctions(){
     std::cout << "IM ALIVE" << std::endl;
 }
@@ -76,3 +76,4 @@ void AESFunctions::MixColumn(unsigned char state[][4]){
         }
     }
 }
+
