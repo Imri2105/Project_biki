@@ -8,6 +8,7 @@ class AESKeyExpand{
         AESKeyExpand();
         ~AESKeyExpand();
         void RotWord(unsigned char word[4],int amount);
+        void SubKeyBytes(unsigned char word[4]);
 
     //more functions to be written
 };

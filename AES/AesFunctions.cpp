@@ -16,7 +16,7 @@ void AESFunctions::SubBytes(unsigned char state[][4]){
     {
         for (int j=0;j<4;j++)
         {
-            state[i][j] = sBox[state[i][j]/16][state[i][j]%16];
+            state[i][j] = SubByte(state[i][j]);
         }
     }
 }

@@ -22,3 +22,9 @@ void AESKeyExpand::RotWord(unsigned char word[4],int amount){
     }
 }
 
+void AESKeyExpand::SubKeyBytes(unsigned char word[4]){
+    for(int i = 0;i<4;i++){
+        word[i] = SubByte(word[i]);
+    }
+}
+
