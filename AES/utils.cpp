@@ -9,6 +9,14 @@ void PrintArray(unsigned char arr[],int size){
 
 }
 
+void RotateOnce(unsigned char arr[],int size){
+    unsigned char temp = arr[0];
+    for(int i =1;i<size;i++){
+        arr[i-1] = arr[i];
+    }
+    arr[size-1] = temp;
+}
+
 void PrintState(unsigned char state[][4]){
     for (int i=0;i<4;i++)
     {

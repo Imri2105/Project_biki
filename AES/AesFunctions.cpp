@@ -1,7 +1,8 @@
 #include "AesFunctions.hpp"
 #include "pch.hpp"
 #include "boxes.hpp"
-#include <iomanip>
+#include "Utils.hpp"
+
 AESFunctions::AESFunctions(){
     std::cout << "IM ALIVE" << std::endl;
 }
@@ -10,12 +11,10 @@ AESFunctions::~AESFunctions(){
     std::cout << "IM NOT ALIVE" << std::endl;
 }
 
-void AESFunctions::RotWord(unsigned char word[4]){
-    unsigned char temp = word[0];
-    for(int i =1;i<4;i++){
-        word[i-1] = word[i];
+void AESFunctions::RotWord(unsigned char word[4],int amount){
+    for(int i = 0;i<amount;i++){
+        RotateOnce(word,4);
     }
-    word[3] = temp;
 }
 
 void AESFunctions::SubBytes(unsigned char state[][4]){
