@@ -28,7 +28,6 @@ void AESFunctions::SubBytes(unsigned char state[][4]){
 }
 
 void AESFunctions::ShiftRow(unsigned char state[][4]){
-    unsigned char tmp = 0x00; //starting value
     for (int i=0;i<4;i++) // loop over row
     {
         for(int j = 0;j<i;j++){
