@@ -27,3 +27,12 @@ void PrintState(unsigned char state[][4]){
         std::cout<<"\n";
     }
 }
+
+void CopyMatrix(unsigned char des[][4],unsigned char src[][4]){
+    for(int i = 0;i<4;i++){
+        for(int j = 0;j<4;j++){
+            des[i][j] = src[i][j];
+        }
+    }
+}
+

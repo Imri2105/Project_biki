@@ -29,15 +29,12 @@ void AESFunctions::SubBytes(unsigned char state[][4]){
 
 void AESFunctions::ShiftRow(unsigned char state[][4]){
     unsigned char tmp = 0x00; //starting value
-    for (int i=1;i<4;i++) // loop over row
+    for (int i=0;i<4;i++) // loop over row
     {
-        for (int j=0;j<i;j++) // how many times shift left
-        {
-            tmp = state[i][0];
-            for (int k=0;k<3;k++)
-                state[i][k] = state[i][k+1];
-            state[i][3] = tmp;
+        for(int j = 0;j<i;j++){
+            RotateOnce(state[i],4);
         }
+        
     }
 }
 
@@ -76,11 +73,6 @@ void AESFunctions::MixColumn(unsigned char state[][4]){
             }
         }
     }
-    
-    for(int i = 0;i<4;i++){
-        for(int j = 0;j<4;j++){
-            state[i][j] = tmp[i][j];
-        }
-    }
+    CopyMatrix(state,tmp);
 }
 
