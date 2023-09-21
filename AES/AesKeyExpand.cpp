@@ -12,9 +12,13 @@ AESKeyExpand::~AESKeyExpand(){
     std::cout<<"AES_KEY OBJECT DESTROYED";
 }
 
+void AESKeyExpand::G_Function(){
 
+}
 
+void AESKeyExpand::GetNextKey(){
 
+}
 
 void AESKeyExpand::RotWord(unsigned char word[4],int amount){
     for(int i = 0;i<amount;i++){

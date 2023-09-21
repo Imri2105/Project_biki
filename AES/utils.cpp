@@ -2,17 +2,18 @@
 #include "Utils.hpp"
 #include "boxes.hpp"
 
-void PrintArray(unsigned char arr[],int size){
-    for(int i = 0;i<size;i++){
+void PrintArray(unsigned char arr[]){
+    for(int i = 0;i<sizeof(arr);i++){
         std::cout<<std::hex<<(int)arr[i]<<' ';
     }
     std::cout<<std::endl;
 
 }
 
-void RotateOnce(unsigned char arr[],int size){
+void RotateOnce(unsigned char arr[]){
+    int size = sizeof(arr);
     unsigned char temp = arr[0];
-    for(int i =1;i<size;i++){
+    for(int i=1;i<size;i++){
         arr[i-1] = arr[i];
     }
     arr[size-1] = temp;
