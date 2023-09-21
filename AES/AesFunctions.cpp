@@ -70,3 +70,17 @@ void AESFunctions::MixColumn(unsigned char state[][4]){
     CopyMatrix(state,tmp);
 }
 
+void AESFunctions::AddRoundKey(unsigned char state[][4],unsigned char key[][4]){
+    for (int i=0;i<4;i++){
+        for (int j=0;j<4;j++)
+            state[i][j]^=key[i][j];
+    }
+}
+
+void AESFunctions::Round(unsigned char state[][4],unsigned char round_key[][4],int round_num){
+    this->SubBytes(state);
+    this->ShiftRow(state);
+    if (round_num != 10)
+        this->MixColumn(state);
+    this->AddRoundKey(state,round_key);
+}

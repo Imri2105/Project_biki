@@ -6,10 +6,11 @@ class AESKeyExpand{
     public:
         AESKeyExpand();
         ~AESKeyExpand();
-        void RotWord(unsigned char word[4],int  = 1);
+        void RotWord(unsigned char word[4],int = 1);
         void SubKeyBytes(unsigned char word[4]);
         void GetNextKey();
-        void G_Function();
+        void G_Function(unsigned char word[4], int round);
+        void ExpendKey(unsigned char key[4][4]);
     //more functions to be written
 };
 #endif

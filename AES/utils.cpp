@@ -42,3 +42,6 @@ unsigned char SubByte(unsigned char byte){
     return sBox[byte/16][byte%16];
 }
 
+unsigned char GetRcon(int index){
+    return Rcon[index];
+}
