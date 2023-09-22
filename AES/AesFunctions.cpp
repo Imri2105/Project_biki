@@ -26,7 +26,7 @@ void AESFunctions::ShiftRow(unsigned char state[][4]){
     for (int i=0;i<4;i++) // loop over row
     {
         for(int j = 0;j<i;j++){
-            RotateOnce(state[i]);
+            RotateOnce(state[i], 4);
         }
         
     }
