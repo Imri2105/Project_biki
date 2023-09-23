@@ -14,6 +14,6 @@ int main(int argc, char const *argv[]){ //checks if mixColumn works, it works.
     //aes_class.ShiftRow(state1);
     //PrintState(state1);*/
     aeskey_class.RotWord(word);
-    PrintArray(word);
+    PrintArray(word, 4);
     return 0;
 }
