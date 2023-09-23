@@ -13,9 +13,9 @@ AESFunctions::~AESFunctions(){
 
 
 void AESFunctions::SubBytes(unsigned char state[][4]){
-    for (int i=0;i<4;i++)
+    for (int i=0; i < 4; i++)
     {
-        for (int j=0;j<4;j++)
+        for (int j=0; j < 4; j++)
         {
             state[i][j] = SubByte(state[i][j]);
         }
@@ -23,10 +23,10 @@ void AESFunctions::SubBytes(unsigned char state[][4]){
 }
 
 void AESFunctions::ShiftRow(unsigned char state[][4]){
-    for (int i=0;i<4;i++) // loop over row
+    for (int i=0; i < 4; i++) // loop over row
     {
-        for(int j = 0;j<i;j++){
-            RotateOnce(state[i],4);
+        for(int j = 0; j < i; j++){
+            RotateOnce(state[i], 4);
         }
         
     }
@@ -34,7 +34,7 @@ void AESFunctions::ShiftRow(unsigned char state[][4]){
 
 unsigned char AESFunctions::IfTwo(unsigned char to_mul){
     //calculates the num if it needs to be multiplied by 2
-    if(to_mul>=128){
+    if(to_mul >= 128){
         unsigned char rest = to_mul-128;     
         unsigned char temp = rest*2;
         return temp^0x1B; 
@@ -70,3 +70,17 @@ void AESFunctions::MixColumn(unsigned char state[][4]){
     CopyMatrix(state,tmp);
 }
 
+void AESFunctions::AddRoundKey(unsigned char state[][4],unsigned char key[][4]){
+    for (int i=0;i<4;i++){
+        for (int j=0;j<4;j++)
+            state[i][j]^=key[i][j];
+    }
+}
+
+void AESFunctions::Round(unsigned char state[][4], unsigned char round_key[][4], int round_num){
+    this->SubBytes(state);
+    this->ShiftRow(state);
+    if (round_num != 10)
+        this->MixColumn(state);
+    this->AddRoundKey(state,round_key);
+}
