@@ -12,21 +12,23 @@ AESFunctions::~AESFunctions(){
 }
 
 
-void AESFunctions::SubBytes(unsigned char state[][4]){
+void AESFunctions::SubBytes(matrix &state){
     for (int i=0; i < 4; i++)
     {
         for (int j=0; j < 4; j++)
         {
+            std::cout<<"state in ["<<i<<"]["<<j<<"] should be "<<std::hex<<(int)SubByte(state[i][j])<<std::endl;
             state[i][j] = SubByte(state[i][j]);
+            
         }
     }
 }
 
-void AESFunctions::ShiftRow(unsigned char state[][4]){
+void AESFunctions::ShiftRow(matrix &state){
     for (int i=0; i < 4; i++) // loop over row
     {
         for(int j = 0; j < i; j++){
-            RotateOnce(state[i], 4);
+            RotateOnce(state[i]);
         }
         
     }
@@ -55,8 +57,8 @@ unsigned char AESFunctions::CalculateNum(unsigned char mul, unsigned char to_mul
     return this->IfTwo(to_mul)^to_mul;
 }
 
-void AESFunctions::MixColumn(unsigned char state[][4]){
-    unsigned char tmp[4][4] = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+void AESFunctions::MixColumn(matrix &state){
+    matrix tmp = CreateEmptyMatrix();
     for (int i=0;i<4;i++)
     {
         for (int j=0;j<4;j++)
@@ -70,14 +72,14 @@ void AESFunctions::MixColumn(unsigned char state[][4]){
     CopyMatrix(state,tmp);
 }
 
-void AESFunctions::AddRoundKey(unsigned char state[][4],unsigned char key[][4]){
+void AESFunctions::AddRoundKey(matrix &state,matrix &key){
     for (int i=0;i<4;i++){
         for (int j=0;j<4;j++)
             state[i][j]^=key[i][j];
     }
 }
 
-void AESFunctions::Round(unsigned char state[][4], unsigned char round_key[][4], int round_num){
+void AESFunctions::Round(matrix &state, matrix &round_key, int round_num){
     this->SubBytes(state);
     this->ShiftRow(state);
     if (round_num != 10)
@@ -85,12 +87,12 @@ void AESFunctions::Round(unsigned char state[][4], unsigned char round_key[][4],
     this->AddRoundKey(state,round_key);
 }
 
-void AESFunctions::Padding(std::vector<unsigned char>& data, size_t block_size){
-    size_t pad_size = block_size - (data.size()% block_size);
+void AESFunctions::Padding(std::vector<unsigned char>& data){
+    size_t pad_size = this->BLOCK_SIZE - (data.size()% this->BLOCK_SIZE);
     data.resize(data.size()+pad_size,pad_size);
 }
 
-void AESFunctions::UnPad(std::vector<unsigned char>&data, size_t block_size){
+void AESFunctions::UnPad(std::vector<unsigned char>& data){
     data.resize(data.size()-data.back());
 }
 

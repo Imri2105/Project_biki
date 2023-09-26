@@ -2,39 +2,43 @@
 #include "Utils.hpp"
 #include "boxes.hpp"
 
-void PrintArray(unsigned char arr[], int size){
-    for(int i = 0; i < size; i++){
-        std::cout<<std::hex<<(int)arr[i]<<' ';
+void PrintArray(std::vector<unsigned char> vector){
+    for(int i = 0; i < vector.size(); i++){
+        std::cout<<std::hex<<(int)vector[i]<<' ';
     }
     std::cout<<std::endl;
 
 }
 
-void RotateOnce(unsigned char arr[], int size){
-    unsigned char temp = arr[0];
-    for(int i=1; i < size; i++){
-        arr[i-1] = arr[i];
+void PrintBlocks(std::vector<matrix> blocks){
+    for(matrix block:blocks){
+        PrintState(block);
+        std::cout<<"\n\n";
     }
-    arr[size-1] = temp;
+        
 }
 
-void PrintState(unsigned char state[][4]){
+void RotateOnce(std::vector<unsigned char> &vector){
+    unsigned char temp = vector[0];
+    for(int i=1; i < vector.size(); i++){
+        vector[i-1] =vector[i];
+    }
+    vector.back() = temp;
+}
+
+void PrintState(matrix state){
     for (int i=0; i < 4; i++)
     {
         for (int j=0; j < 4; j++)
         {
-            std::cout<<std::hex<<(int)state[i][j]<<' ';
+            std::cout<<std::hex<<(int)state[j][i]<<' ';
         }
         std::cout<<"\n";
     }
 }
 
-void CopyMatrix(unsigned char des[][4],unsigned char src[][4]){
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            des[i][j] = src[i][j];
-        }
-    }
+void CopyMatrix(matrix &des,const matrix &src){
+    des = src;
 }
 
 
@@ -51,3 +55,27 @@ unsigned char SubByte(unsigned char byte){
 unsigned char GetRcon(int index){
     return Rcon[index];
 }
+
+matrix CreateEmptyMatrix(){
+    matrix m;
+    m.resize(4,std::vector<unsigned char>(4,0));
+    return m;
+}
+
+
+std::vector<matrix> DivideToMatrix(std::vector<unsigned char> data){
+    std::vector<matrix> divided_vector;
+    for(int i = 0;i<data.size();i+=16){
+        matrix temp = CreateEmptyMatrix();
+        for(int j = i;j<i+16;j++){
+            int index = j%16;
+            temp[index/4][index%4] = data.at(j);
+        }
+        divided_vector.push_back(temp);
+    }
+    return divided_vector;
+}
+
+
+
+

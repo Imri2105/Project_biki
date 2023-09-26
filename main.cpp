@@ -2,10 +2,12 @@
 #include "AES/AesFunctions.hpp"
 #include "AES/Utils.hpp"
 #include "AES/AesKeyExpand.hpp"
+#include "AES/AESCipher.hpp"
 
 int main(int argc, char const *argv[]){ //checks if mixColumn works, it works.
     
     AESFunctions aes_class = AESFunctions();
+    AESCipher c;
     /*AESKeyExpand aeskey_class = AESKeyExpand();
     unsigned char word[] = {0x27,0x39,0x95,0xf1};
     /*unsigned char state[4][4] = {{0xEA,0x04,0X65,0x85},{0x83,0x45,0x5D,0x96},{0x5C,0x33,0x98,0xB0},{0xF0,0x2D,0xAD,0xC5}};
@@ -16,15 +18,13 @@ int main(int argc, char const *argv[]){ //checks if mixColumn works, it works.
     //PrintState(state1);
     aeskey_class.RotWord(word);
     PrintArray(word, 4);*/
-
     std::vector<unsigned char> v;
-    for(int i = 0;i<1;i++){
+    for(size_t i = 0;i<17;i++){
         v.push_back(i);
     }
-    PrintVector(v);
-    aes_class.Padding(v,aes_class.BLOCK_SIZE);
-    PrintVector(v);
-    aes_class.UnPad(v,aes_class.BLOCK_SIZE);
-    PrintVector(v);
+
+    c.Encrypt(v,std::vector<unsigned char>(16,0));
+        
+
     return 0;
 }

@@ -3,5 +3,6 @@
 
 #include <iostream>
 #include <vector>
+typedef std::vector<std::vector<unsigned char>> matrix;
 
 #endif
