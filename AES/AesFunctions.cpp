@@ -87,9 +87,7 @@ void AESFunctions::Round(unsigned char state[][4], unsigned char round_key[][4],
 
 void AESFunctions::Padding(std::vector<unsigned char>& data, size_t block_size){
     size_t pad_size = block_size - (data.size()% block_size);
-    for(int i = 0;i<pad_size;i++){
-        data.push_back(pad_size);
-    }
+    data.resize(data.size()+pad_size,pad_size);
 }
 
 void AESFunctions::UnPad(std::vector<unsigned char>&data, size_t block_size){
