@@ -37,6 +37,13 @@ void CopyMatrix(unsigned char des[][4],unsigned char src[][4]){
     }
 }
 
+
+void PrintVector(std::vector<unsigned char> v){
+    for(unsigned char item: v)
+        std::cout<<std::hex<<(int)item<<" ";
+    std::cout<<std::endl;
+}
+
 unsigned char SubByte(unsigned char byte){
     return sBox[byte/16][byte%16];
 }
