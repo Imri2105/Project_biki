@@ -66,3 +66,13 @@ void AESKeyExpand::SubKeyBytes(std::vector<unsigned char> &word){
     }
 }
 
+std::vector<matrix> AESKeyExpand::GetRoundKeys(matrix key, int round_amount){
+    std::vector <matrix> keys;
+    keys.insert(keys.begin(),key);
+    for(int i =1;i<=round_amount;i++){
+        this->ExpandKey(key,i);
+        keys.insert(keys.begin(),key);
+    }
+    return keys;
+}
+

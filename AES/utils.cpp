@@ -31,7 +31,7 @@ void PrintState(matrix state){
     {
         for (int j=0; j < 4; j++)
         {
-            std::cout<<"["<<j<<"]["<<i<<"]";
+            //std::cout<<"["<<j<<"]["<<i<<"]";
             std::cout<<std::hex<<(int)state[j][i]<<' ';
         }
         std::cout<<"\n";
@@ -65,6 +65,10 @@ void PrintVectorWOSpaces(std::vector<unsigned char> v){
 
 unsigned char SubByte(unsigned char byte){
     return sBox[byte/16][byte%16];
+}
+
+unsigned char InverseSubByte(unsigned char byte){
+    return s_inverse[byte/16][byte%16];
 }
 
 unsigned char GetRcon(int index){
