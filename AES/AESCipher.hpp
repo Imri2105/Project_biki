@@ -11,6 +11,7 @@ private:
 public:
     AESCipher();
     ~AESCipher();
+    std::vector<unsigned char> Encrypt(std::string data, std::vector<unsigned char> key);
     std::vector<unsigned char> Encrypt(std::vector<unsigned char> data, std::vector<unsigned char> key);
     std::vector<unsigned char> Decrypt(std::vector<unsigned char> cipher_text, std::vector<unsigned char> key);
     

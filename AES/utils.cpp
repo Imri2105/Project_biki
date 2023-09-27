@@ -107,6 +107,10 @@ std::vector<unsigned char> FlatMatrixes(std::vector<matrix>  blocks){
     return flat_data;
 }
 
+std::string BytesToS(std::vector<unsigned char> bytes){
+    return std::string(bytes.begin(),bytes.end());
+}
+
 
 
 
