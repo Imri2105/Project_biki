@@ -2,10 +2,10 @@
 #include "pch.hpp"
 
 AESCipher::AESCipher(){
-    //this->tools = AESFunctions();
+    //currently empty
 }
 AESCipher::~AESCipher(){
-
+    //currently empty
 }
 
 std::vector<unsigned char> AESCipher::Encrypt(std::vector<unsigned char> data, std::vector<unsigned char> key){
