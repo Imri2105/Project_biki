@@ -31,6 +31,7 @@ void PrintState(matrix state){
     {
         for (int j=0; j < 4; j++)
         {
+            std::cout<<"["<<j<<"]["<<i<<"]";
             std::cout<<std::hex<<(int)state[j][i]<<' ';
         }
         std::cout<<"\n";
@@ -74,6 +75,18 @@ std::vector<matrix> DivideToMatrix(std::vector<unsigned char> data){
         divided_vector.push_back(temp);
     }
     return divided_vector;
+}
+
+std::vector<unsigned char> FlatMatrixes(std::vector<matrix>  blocks){
+    std::vector<unsigned char> flat_data;
+    for(int i = 0;i<blocks.size();i++){
+        for(int j = 0;j<blocks[i].size();j++){
+            for(int c = 0;c<blocks[i][j].size();c++){
+                flat_data.push_back(blocks[i][j][c]);
+            }
+        }
+    }
+    return flat_data;
 }
 
 

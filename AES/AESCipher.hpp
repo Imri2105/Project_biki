@@ -3,9 +3,11 @@
 
 #include "AesFunctions.hpp"
 #include "Utils.hpp"
+#include "AesKeyExpand.hpp"
 class AESCipher{
 private:
     AESFunctions tools = AESFunctions();
+    AESKeyExpand key_tools = AESKeyExpand();
 public:
     AESCipher();
     ~AESCipher();

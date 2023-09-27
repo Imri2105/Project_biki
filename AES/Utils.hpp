@@ -11,5 +11,6 @@ unsigned char SubByte(unsigned char byte);
 unsigned char GetRcon(int index);
 matrix CreateEmptyMatrix();
 std::vector<matrix> DivideToMatrix(std::vector<unsigned char> data);
+std::vector<unsigned char> FlatMatrixes(std::vector<matrix>  blocks);
 
 #endif

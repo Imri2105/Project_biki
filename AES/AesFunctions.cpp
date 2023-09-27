@@ -25,12 +25,16 @@ void AESFunctions::SubBytes(matrix &state){
 }
 
 void AESFunctions::ShiftRow(matrix &state){
-    for (int i=0; i < 4; i++) // loop over row
+    unsigned char tmp = 0x00; //starting value
+    for (int i=1;i<4;i++) // loop over row
     {
-        for(int j = 0; j < i; j++){
-            RotateOnce(state[i]);
+        for (int j=0;j<i;j++) // how many times shift left
+        {
+            tmp = state[0][i];
+            for (int k=0;k<3;k++)
+                state[k][i] = state[k+1][i];
+            state[3][i] = tmp;
         }
-        
     }
 }
 
@@ -65,7 +69,7 @@ void AESFunctions::MixColumn(matrix &state){
         {
             for (int k=0;k<4;k++)
             {
-                tmp[j][i] ^= CalculateNum(mixMatrix[j][k],state[k][i]);
+                tmp[i][j] ^= CalculateNum(mixMatrix[j][k],state[i][k]);
             }
         }
     }

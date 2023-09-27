@@ -11,13 +11,16 @@ AESCipher::~AESCipher(){
 std::vector<unsigned char> AESCipher::Encrypt(std::vector<unsigned char> data, std::vector<unsigned char> key){
     this->tools.Padding(data);
     std::vector<matrix> blocks = DivideToMatrix(data);
+    matrix key_matrix = DivideToMatrix(key).at(0);
     for(size_t i = 0;i<blocks.size();i++){
-        tools.SubBytes(blocks[i]);
-        std::cout<<"round"<<i<<std::endl;
+        this->tools.AddRoundKey(blocks[i],key_matrix);
+        for(int round = 1;round<=10;round++){
+            this->key_tools.ExpandKey(key_matrix,round);
+            this->tools.Round(blocks[i],key_matrix,round);
+        }
     }
-    PrintBlocks(blocks);
 
-    return std::vector<unsigned char>();
+    return FlatMatrixes(blocks);
 }
 
 std::vector<unsigned char>AESCipher::Decrypt(std::vector<unsigned char> cipher_text, std::vector<unsigned char> key){

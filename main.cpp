@@ -5,25 +5,13 @@
 #include "AES/AESCipher.hpp"
 
 int main(int argc, char const *argv[]){ //checks if mixColumn works, it works.
-    
-    AESFunctions aes_class = AESFunctions();
     AESCipher c;
-    /*AESKeyExpand aeskey_class = AESKeyExpand();
-    unsigned char word[] = {0x27,0x39,0x95,0xf1};
-    /*unsigned char state[4][4] = {{0xEA,0x04,0X65,0x85},{0x83,0x45,0x5D,0x96},{0x5C,0x33,0x98,0xB0},{0xF0,0x2D,0xAD,0xC5}};
-    //unsigned char state1[4][4] = {{0x87,0xF2,0X4D,0x97},{0x6E,0x4C,0x90,0xEC},{0x46,0xE7,0x4A,0xC3},{0xA6,0x8C,0xD8,0x95}};
-    //PrintState(state1);
-    //std::cout<<"------------------------------"<<std::endl;
-    //aes_class.ShiftRow(state1);
-    //PrintState(state1);
-    aeskey_class.RotWord(word);
-    PrintArray(word, 4);*/
-    std::vector<unsigned char> v;
-    for(size_t i = 0;i<17;i++){
-        v.push_back(i);
-    }
-
-    c.Encrypt(v,std::vector<unsigned char>(16,0));
+    //std::vector<unsigned char> data = {0x87,0x6E,0x46,0xa6,0xf2,0x4c,0xe7,0x8c,0x4d,0x90,0x4a,0xd8,0x97,0xEC,0xc3,0x95};
+    //std::vector<unsigned char> key = {0xac,0x77,0x66,0xf3,0x19,0xfa,0xdc,0x21,0x28,0xd1,0x29,0x41,0x57,0x5c,0x00,0x6a};
+    std::vector<unsigned char> data(16,0x42);
+    std::vector<unsigned char> key(16,0x41);
+    std::vector<unsigned char> cipher = c.Encrypt(data,key);
+    PrintVector(cipher);
         
 
     return 0;
