@@ -44,8 +44,22 @@ void CopyMatrix(matrix &des,const matrix &src){
 
 
 void PrintVector(std::vector<unsigned char> v){
-    for(unsigned char item: v)
+    for(unsigned char item: v){
+        if(item<16){
+            std::cout<<"0";
+        }
         std::cout<<std::hex<<(int)item<<" ";
+    }
+    std::cout<<std::endl;
+}
+
+void PrintVectorWOSpaces(std::vector<unsigned char> v){
+    for(unsigned char item: v){
+        if(item<16){
+            std::cout<<"0";
+        }
+        std::cout<<std::uppercase<<std::hex<<(int)item;
+    }
     std::cout<<std::endl;
 }
 

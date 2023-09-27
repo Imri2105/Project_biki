@@ -17,9 +17,7 @@ void AESFunctions::SubBytes(matrix &state){
     {
         for (int j=0; j < 4; j++)
         {
-            std::cout<<"state in ["<<i<<"]["<<j<<"] should be "<<std::hex<<(int)SubByte(state[i][j])<<std::endl;
             state[i][j] = SubByte(state[i][j]);
-            
         }
     }
 }

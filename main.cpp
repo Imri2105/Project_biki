@@ -12,6 +12,7 @@ int main(int argc, char const *argv[]){ //checks if mixColumn works, it works.
     std::vector<unsigned char> key(16,0x41);
     std::vector<unsigned char> cipher = c.Encrypt(data,key);
     PrintVector(cipher);
+    PrintVectorWOSpaces(cipher);
         
 
     return 0;

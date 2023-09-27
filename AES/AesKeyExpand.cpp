@@ -5,16 +5,21 @@
 
 
 AESKeyExpand::AESKeyExpand(){
-    std::cout<<"AES_KEY OBJECT CREATED";
+    std::cout<<"AES_KEY OBJECT CREATED"<<std::endl;
 }
 
 AESKeyExpand::~AESKeyExpand(){
-    std::cout<<"AES_KEY OBJECT DESTROYED";
+    std::cout<<"AES_KEY OBJECT DESTROYED"<<std::endl;
 }
 
 void AESKeyExpand::G_Function(std::vector<unsigned char> &word, int round){
+    //PrintVector(word);
     RotateOnce(word); // ? @zada check if 4 is the correct num 
+    //PrintVector(word);
+    //std::cout<<"-------------------"<<std::endl;
     SubKeyBytes(word);
+    //PrintVector(word);
+    //std::cout<<"-------------------------------------------------"<<std::endl;
     word[0]^=GetRcon(round-1);
 }
 
@@ -42,7 +47,7 @@ void AESKeyExpand::SetNewWord(matrix &key, int index,int round){
     }
     else{
         for (int i = 0; i<4; i++){
-            key[index-1][i] ^= key[index][i];
+            key[index][i] ^= key[index-1][i];
         }
     }
 }
